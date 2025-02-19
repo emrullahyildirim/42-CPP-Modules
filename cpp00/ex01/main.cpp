@@ -6,7 +6,7 @@
 /*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:34:38 by emyildir          #+#    #+#             */
-/*   Updated: 2024/11/21 21:42:43 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:22:50 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int string_to_int(std::string str)
     return (num * sign);
 }
 
-bool is_valid_index(std::string str)
+bool is_num(std::string str)
 {
     for (int i = 0; i < str[i]; i++)
         if (!std::isdigit(str[i]))
@@ -46,6 +46,11 @@ bool is_valid_index(std::string str)
 void Action_SearchContact(PhoneBook *phoneBook)
 {
     int     contactCount = phoneBook->getContactCount();   
+	if (contactCount == 0)
+	{
+		std::cout << "No entry found!" << std::endl;
+		return ;
+	}
     for (int i = 0; i < contactCount; i++)
     {
         Contact contact = phoneBook->getContact(i);
@@ -76,26 +81,28 @@ void Action_SearchContact(PhoneBook *phoneBook)
                 std::cout << "|";
         }    
     }
+	
     std::string input;
     std::cout << "Select Index To View: ";
     std::cin >> input;
-    if (!is_valid_index(input))
+    if (!is_num(input))
     {
         std::cout << "Index can only contain numbers." << std::endl;
         return ;
     }
     int index = string_to_int(input);
-    if (index < 0 || index > contactCount)
+    if (index < 0 || index >= contactCount)
     {
-        std::cout << "Index should be between 0 and " << contactCount << "." << std::endl;
+		std::cout << "Index " << index << " is out of bounds. " << std::endl;
         return ;
     }
+	
     Contact contact = phoneBook->getContact(index);
     std::cout << "First Name: " << contact.getFirstName() << std::endl;
-    std::cout << "Last Name: " <<contact.getLastName() << std::endl;
-    std::cout << "Nick Name: " <<contact.getNickName() << std::endl;
-    std::cout << "Phone Number: " <<contact.getPhoneNumber() << std::endl;
-    std::cout << "Darkest Secret: " <<contact.getDarkestSecret() << std::endl;
+    std::cout << "Last Name: " << contact.getLastName() << std::endl;
+    std::cout << "Nick Name: " << contact.getNickName() << std::endl;
+    std::cout << "Phone Number: " << contact.getPhoneNumber() << std::endl;
+    std::cout << "Darkest Secret: " << contact.getDarkestSecret() << std::endl;
 }
 
 void Action_AddContact(PhoneBook *phoneBook)
@@ -109,6 +116,8 @@ void Action_AddContact(PhoneBook *phoneBook)
         std::cin >> inputs[i];
         if (inputs[i].length() == 0)
             std::cout << prompts[i--] << " can't be empty!" << std::endl;
+		else if (i == 3 && !is_num(inputs[i]))
+			std::cout << prompts[i--] << " can't contain numbers!" << std::endl;
     }
     phoneBook->Add(inputs[0], inputs[1], inputs[2], inputs[3], inputs[4]);
 }
