@@ -6,11 +6,28 @@
 /*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:34:38 by emyildir          #+#    #+#             */
-/*   Updated: 2025/02/19 14:22:50 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:23:44 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.hpp"
+
+int	input(std::string &str)
+{
+	std::cin >> str;
+
+	if (std::cin.eof())
+	{
+		std::cout << "eof reached!" << std::endl;
+		return (false);
+	}
+	else if (std::cin.fail())
+	{
+		std::cout << "reading input failed!" << std::endl;
+		return (false);
+	}
+	return (true);
+}
 
 int string_to_int(std::string str)
 {
@@ -43,13 +60,13 @@ bool is_num(std::string str)
     return (true);
 }
 
-void Action_SearchContact(PhoneBook *phoneBook)
+int	Action_SearchContact(PhoneBook *phoneBook)
 {
     int     contactCount = phoneBook->getContactCount();   
 	if (contactCount == 0)
 	{
 		std::cout << "No entry found!" << std::endl;
-		return ;
+		return (true);
 	}
     for (int i = 0; i < contactCount; i++)
     {
@@ -82,19 +99,20 @@ void Action_SearchContact(PhoneBook *phoneBook)
         }    
     }
 	
-    std::string input;
+    std::string user_input;
     std::cout << "Select Index To View: ";
-    std::cin >> input;
-    if (!is_num(input))
+    if (!input(user_input))
+		return (false);
+    if (!is_num(user_input))
     {
         std::cout << "Index can only contain numbers." << std::endl;
-        return ;
+        return (true);
     }
-    int index = string_to_int(input);
+    int index = string_to_int(user_input);
     if (index < 0 || index >= contactCount)
     {
 		std::cout << "Index " << index << " is out of bounds. " << std::endl;
-        return ;
+        return (true);
     }
 	
     Contact contact = phoneBook->getContact(index);
@@ -103,9 +121,10 @@ void Action_SearchContact(PhoneBook *phoneBook)
     std::cout << "Nick Name: " << contact.getNickName() << std::endl;
     std::cout << "Phone Number: " << contact.getPhoneNumber() << std::endl;
     std::cout << "Darkest Secret: " << contact.getDarkestSecret() << std::endl;
+	return (true);
 }
 
-void Action_AddContact(PhoneBook *phoneBook)
+int	Action_AddContact(PhoneBook *phoneBook)
 {
     std::string inputs[5];
     std::string prompts[5] = {"Firstname", "Lastname", "Nickname", "Phone Number", "Darkest Secret"};
@@ -113,13 +132,15 @@ void Action_AddContact(PhoneBook *phoneBook)
     for (int i = 0; i < 5; i++)
     {
         std::cout << prompts[i] << ": " << std::endl;
-        std::cin >> inputs[i];
-        if (inputs[i].length() == 0)
+		if (!input(inputs[i]))
+			return (false);
+        else if (inputs[i].length() == 0)
             std::cout << prompts[i--] << " can't be empty!" << std::endl;
 		else if (i == 3 && !is_num(inputs[i]))
 			std::cout << prompts[i--] << " can't contain numbers!" << std::endl;
     }
     phoneBook->Add(inputs[0], inputs[1], inputs[2], inputs[3], inputs[4]);
+	return (true);
 }
 
 int main()
@@ -133,10 +154,9 @@ int main()
         std::cin >> input;
         if (!input.compare("EXIT"))
             break ; 
-        else if (!input.compare("ADD"))
-            Action_AddContact(&phoneBook);
-        else if (!input.compare("SEARCH"))
-            Action_SearchContact(&phoneBook);
+        else if ((!input.compare("ADD") && !Action_AddContact(&phoneBook)) 
+			|| (!input.compare("SEARCH") && !Action_SearchContact(&phoneBook)))
+			return (EXIT_FAILURE);
     }
     return (0);
 }
