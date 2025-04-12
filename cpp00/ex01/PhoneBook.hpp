@@ -18,7 +18,7 @@ class PhoneBook {
         int     _count;
     public:
         PhoneBook();
-        void    Add(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret);
-        int     getContactCount();
-        Contact   getContact(int index);
+        Contact		getContact(int index);
+        int			getContactCount();
+        void		Add(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret);
 };

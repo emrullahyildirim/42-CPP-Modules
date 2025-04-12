@@ -16,7 +16,7 @@ Contact::Contact()
 {
 }
 
-void    Contact::set_attributes(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret)
+void    Contact::setAttributes(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret)
 {
     _firstName = firstName;
     _lastName = lastName;

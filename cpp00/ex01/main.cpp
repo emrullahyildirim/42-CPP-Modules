@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: emyildir <emyildir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:34:38 by emyildir          #+#    #+#             */
-/*   Updated: 2025/04/08 11:23:44 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:25:57 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 int	input(std::string &str)
 {
-	std::cin >> str;
-
+	std::getline(std::cin, str);
 	if (std::cin.eof())
 	{
-		std::cout << "eof reached!" << std::endl;
+		std::cout << "Eof found!" << std::endl;
 		return (false);
 	}
 	else if (std::cin.fail())
 	{
-		std::cout << "reading input failed!" << std::endl;
+		std::cout << "Reading input failed!" << std::endl;
 		return (false);
 	}
 	return (true);
@@ -52,7 +51,7 @@ int string_to_int(std::string str)
     return (num * sign);
 }
 
-bool is_num(std::string str)
+bool isNum(std::string str)
 {
     for (int i = 0; i < str[i]; i++)
         if (!std::isdigit(str[i]))
@@ -103,7 +102,7 @@ int	Action_SearchContact(PhoneBook *phoneBook)
     std::cout << "Select Index To View: ";
     if (!input(user_input))
 		return (false);
-    if (!is_num(user_input))
+    if (!isNum(user_input))
     {
         std::cout << "Index can only contain numbers." << std::endl;
         return (true);
@@ -136,7 +135,7 @@ int	Action_AddContact(PhoneBook *phoneBook)
 			return (false);
         else if (inputs[i].length() == 0)
             std::cout << prompts[i--] << " can't be empty!" << std::endl;
-		else if (i == 3 && !is_num(inputs[i]))
+		else if (i == 3 && !isNum(inputs[i]))
 			std::cout << prompts[i--] << " can't contain numbers!" << std::endl;
     }
     phoneBook->Add(inputs[0], inputs[1], inputs[2], inputs[3], inputs[4]);
@@ -145,18 +144,19 @@ int	Action_AddContact(PhoneBook *phoneBook)
 
 int main()
 {
-    PhoneBook phoneBook;
+    PhoneBook   phoneBook;
+    std::string option;
     
-    std::string input;
     while (true)
     {
         std::cout << "What do you want to do? (ADD, SEARCH, EXIT)" << std::endl << "> ";
-        std::cin >> input;
-        if (!input.compare("EXIT"))
+        if (!input(option))
+		    return (EXIT_FAILURE);
+        if (!option.compare("EXIT"))
             break ; 
-        else if ((!input.compare("ADD") && !Action_AddContact(&phoneBook)) 
-			|| (!input.compare("SEARCH") && !Action_SearchContact(&phoneBook)))
+        else if ((!option.compare("ADD") && !Action_AddContact(&phoneBook)) 
+			|| (!option.compare("SEARCH") && !Action_SearchContact(&phoneBook)))
 			return (EXIT_FAILURE);
     }
-    return (0);
+    return (EXIT_SUCCESS);
 }

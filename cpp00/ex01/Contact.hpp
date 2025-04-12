@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: emyildir <emyildir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:34:34 by emyildir          #+#    #+#             */
-/*   Updated: 2024/11/21 20:14:18 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:17:16 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ class Contact {
         std::string _darkestSecret;
     public:
         Contact();
-        void    set_attributes(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret);
         std::string getFirstName();
         std::string getLastName();
-        std::string getNickName();      
+        std::string getNickName();
         std::string getPhoneNumber();
         std::string getDarkestSecret();
+        void		setAttributes(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret);
 };
