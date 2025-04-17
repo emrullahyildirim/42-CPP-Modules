@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emyildir <emyildir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:34:38 by emyildir          #+#    #+#             */
-/*   Updated: 2025/04/12 19:25:57 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:19:37 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	input(std::string &str)
 	return (true);
 }
 
-int string_to_int(std::string str)
+int stringToInt(std::string str)
 {
     int     num;
     int     sign;
@@ -51,9 +51,21 @@ int string_to_int(std::string str)
     return (num * sign);
 }
 
+bool isAsciiAlpha(std::string str)
+{
+	for (size_t i = 0; i < str.length(); i++)
+	{
+		char chr = str[i];
+        if (!((chr >= 'a' && chr <= 'z') || (chr >= 'A' && chr <= 'Z')))
+            return false;
+		
+	}
+	return (true);
+}	
+
 bool isNum(std::string str)
 {
-    for (int i = 0; i < str[i]; i++)
+    for (size_t i = 0; i < str.length(); i++)
         if (!std::isdigit(str[i]))
             return (false);
     return (true);
@@ -81,15 +93,15 @@ int	Action_SearchContact(PhoneBook *phoneBook)
         for (int i = 0; i < 4; i++)
         {
             int lenght = columns[i].length();
-            int space_count = 10 - lenght > 0 ? 10 - lenght : 0;
+            int spaceCount = 10 - lenght > 0 ? 10 - lenght : 0;
             for (int j = 0; j < 10; j++)
             {
-                if (j < space_count)
+                if (j < spaceCount)
                     std::cout << ' ';
                 else if (j == 9 && lenght > 10)
                     std::cout << '.';
                 else 
-                    std::cout << columns[i][j - space_count];
+                    std::cout << columns[i][j - spaceCount];
             }
             if (i == 3)
                 std::cout << std::endl;
@@ -98,16 +110,16 @@ int	Action_SearchContact(PhoneBook *phoneBook)
         }    
     }
 	
-    std::string user_input;
+    std::string userInput;
     std::cout << "Select Index To View: ";
-    if (!input(user_input))
+    if (!input(userInput))
 		return (false);
-    if (!isNum(user_input))
+    if (!isNum(userInput))
     {
         std::cout << "Index can only contain numbers." << std::endl;
         return (true);
     }
-    int index = string_to_int(user_input);
+    int index = stringToInt(userInput);
     if (index < 0 || index >= contactCount)
     {
 		std::cout << "Index " << index << " is out of bounds. " << std::endl;
@@ -135,8 +147,10 @@ int	Action_AddContact(PhoneBook *phoneBook)
 			return (false);
         else if (inputs[i].length() == 0)
             std::cout << prompts[i--] << " can't be empty!" << std::endl;
+		else if (i != 3 && !isAsciiAlpha(inputs[i]))
+            std::cout << prompts[i--] << " can't contain non-alpha characters!" << std::endl;
 		else if (i == 3 && !isNum(inputs[i]))
-			std::cout << prompts[i--] << " can't contain numbers!" << std::endl;
+			std::cout << prompts[i--] << " can only contain numbers!" << std::endl;
     }
     phoneBook->Add(inputs[0], inputs[1], inputs[2], inputs[3], inputs[4]);
 	return (true);
