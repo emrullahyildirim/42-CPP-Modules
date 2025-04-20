@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: emyildir <emyildir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:34:41 by emyildir          #+#    #+#             */
-/*   Updated: 2024/11/21 19:20:31 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/18 21:04:30 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#ifndef PHONEBOOK_H
+# define PHONEBOOK_H
+
+# include "Contact.hpp"
 
 class PhoneBook {
     private:
@@ -22,3 +25,5 @@ class PhoneBook {
         int			getContactCount();
         void		Add(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret);
 };
+
+#endif

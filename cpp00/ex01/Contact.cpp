@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: emyildir <emyildir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:47:13 by emyildir          #+#    #+#             */
-/*   Updated: 2024/11/21 20:14:41 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/18 21:06:05 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#include "Contact.hpp"
 
 Contact::Contact()
 {

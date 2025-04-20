@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: emyildir <emyildir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 21:34:37 by emyildir          #+#    #+#             */
-/*   Updated: 2025/04/17 16:18:11 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/19 19:30:32 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class Weapon {
 		std::string	type;
 
 	public: 
-		Weapon( void );
 		Weapon( std::string type );
 		const std::string	&getType();
 		void				setType( std::string type );

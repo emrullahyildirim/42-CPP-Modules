@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: emyildir <emyildir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 21:37:50 by emyildir          #+#    #+#             */
-/*   Updated: 2025/04/17 16:31:19 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/19 19:32:43 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@ const std::string	&Weapon::getType()
 }
 
 void	Weapon::setType( std::string type )
-{
-	this->type = type;
-}
-
-Weapon::Weapon( void )
 {
 	this->type = type;
 }

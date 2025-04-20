@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: emyildir <emyildir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:34:38 by emyildir          #+#    #+#             */
-/*   Updated: 2025/04/17 15:19:37 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/18 21:05:24 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+# include <iostream>
+# include <cstdlib>
+# include "PhoneBook.hpp"
 
 int	input(std::string &str)
 {
@@ -67,6 +69,14 @@ bool isNum(std::string str)
 {
     for (size_t i = 0; i < str.length(); i++)
         if (!std::isdigit(str[i]))
+            return (false);
+    return (true);
+}
+
+bool isEmpty(std::string str)
+{
+	for (size_t i = 0; i < str.length(); i++)
+        if (str[i] != ' ')
             return (false);
     return (true);
 }
@@ -145,9 +155,9 @@ int	Action_AddContact(PhoneBook *phoneBook)
         std::cout << prompts[i] << ": " << std::endl;
 		if (!input(inputs[i]))
 			return (false);
-        else if (inputs[i].length() == 0)
+        else if (isEmpty(inputs[i]))
             std::cout << prompts[i--] << " can't be empty!" << std::endl;
-		else if (i != 3 && !isAsciiAlpha(inputs[i]))
+		else if (i < 3 && !isAsciiAlpha(inputs[i]))
             std::cout << prompts[i--] << " can't contain non-alpha characters!" << std::endl;
 		else if (i == 3 && !isNum(inputs[i]))
 			std::cout << prompts[i--] << " can only contain numbers!" << std::endl;

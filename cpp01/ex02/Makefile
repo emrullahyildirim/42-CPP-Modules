@@ -2,7 +2,7 @@ NAME = PointersAndReferences
 SOURCES = main.cpp 
 
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
@@ -13,6 +13,6 @@ clean:
 	echo "Nothing to clean.."
 
 fclean:
-	$(RM) -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all

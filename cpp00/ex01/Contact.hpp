@@ -6,11 +6,14 @@
 /*   By: emyildir <emyildir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:34:34 by emyildir          #+#    #+#             */
-/*   Updated: 2025/04/12 19:17:16 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/18 21:05:40 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#ifndef CONTACT_H
+# define CONTACT_H
+
+#include <iostream>
 
 class Contact {
     private: 
@@ -28,3 +31,5 @@ class Contact {
         std::string getDarkestSecret();
         void		setAttributes(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret);
 };
+
+#endif

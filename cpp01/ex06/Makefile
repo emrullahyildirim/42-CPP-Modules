@@ -13,6 +13,6 @@ clean:
 	echo "Nothing to clean.."
 
 fclean:
-	$(RM) -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all

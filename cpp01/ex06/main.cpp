@@ -1,5 +1,5 @@
-#include "Harl.hpp"
 #include <cstdlib>
+#include "Harl.hpp"
 
 int	main(int size, char **args)
 {

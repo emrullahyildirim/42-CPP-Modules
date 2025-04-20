@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: emyildir <emyildir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:02:19 by emyildir          #+#    #+#             */
-/*   Updated: 2025/04/17 15:37:23 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/18 21:38:34 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

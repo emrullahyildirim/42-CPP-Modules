@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: emyildir <emyildir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 14:38:49 by emyildir          #+#    #+#             */
-/*   Updated: 2025/04/17 16:31:00 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/19 16:12:34 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 Zombie::Zombie()
 {
+}
+
+Zombie::~Zombie()
+{
+	std::cout << name << " Destructor called!" << std::endl;
 }
 
 void Zombie::announce()
@@ -24,9 +29,4 @@ void Zombie::announce()
 void Zombie::setName( std::string name)
 {
 	this->name = name;
-}
-
-Zombie::~Zombie()
-{
-	std::cout << name << " Destructor called!" << std::endl;
 }

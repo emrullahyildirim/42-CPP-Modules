@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emyildir <emyildir@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: emyildir <emyildir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:48:37 by emyildir          #+#    #+#             */
-/*   Updated: 2025/04/17 16:15:53 by emyildir         ###   ########.fr       */
+/*   Updated: 2025/04/19 18:32:45 by emyildir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cstdlib>
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
@@ -31,5 +32,5 @@ int main()
 	club.setType("some other type of club");
 	jim.attack();
 	}
-	return 0;
+	return EXIT_SUCCESS;
 }
