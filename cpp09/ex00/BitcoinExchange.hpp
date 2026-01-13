@@ -18,7 +18,7 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange& other);
 		BitcoinExchange&	operator=(const BitcoinExchange& other);
 
-		void	exchange(t_dataMap input);
+		void	processLine(const std::string &line);
 };
 
 #endif 
